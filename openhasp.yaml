@@ -32,6 +32,19 @@ openhasp:
       - obj: "p2b23" # state
         properties:
           "text_color": '{{ "#FF0000" if is_state_attr("climate.parter", "hvac_action", "heating") else "#FFFFFF" }}'
+      - obj: "p2b23" # state
+        event:
+          "up":
+            - service: input_number.set_value
+              target:
+                entity_id: input_number.hasspanel_thermostat
+              data:
+                value: '{{state_attr("climate.parter", "temperature") | round(1, "half", 0)}}'
+            - service: script.hasspanel_thermostat_popup
+              data:
+                entity_name: '{{ state_attr("climate.parter", "friendly_name")[:12] }}'
+                entity_id: "climate.parter"
+                entity_color: "#f6d169"
 
       ##### TRV2
       - obj: "p2b31" # trv name
@@ -43,6 +56,18 @@ openhasp:
       - obj: "p2b33" # state
         properties:
           "text_color": '{{ "#FF0000" if is_state_attr("climate.lazienka", "hvac_action", "heating") else "#FFFFFF" }}'
+        event:
+          "up":
+            - service: input_number.set_value
+              target:
+                entity_id: input_number.hasspanel_thermostat
+              data:
+                value: '{{state_attr("climate.lazienka", "temperature") | round(1, "half", 0)}}'
+            - service: script.hasspanel_thermostat_popup
+              data:
+                entity_name: '{{ state_attr("climate.lazienka", "friendly_name")[:12] }}'
+                entity_id: "climate.lazienka"
+                entity_color: "#f6d169"
 
       ##### TRV3
       - obj: "p2b41" # trv name
@@ -54,6 +79,18 @@ openhasp:
       - obj: "p2b43" # state
         properties:
           "text_color": '{{ "#FF0000" if is_state_attr("climate.dzik", "hvac_action", "heating") else "#FFFFFF" }}'
+        event:
+          "up":
+            - service: input_number.set_value
+              target:
+                entity_id: input_number.hasspanel_thermostat
+              data:
+                value: '{{state_attr("climate.dzik", "temperature") | round(1, "half", 0)}}'
+            - service: script.hasspanel_thermostat_popup
+              data:
+                entity_name: '{{ state_attr("climate.dzik", "friendly_name")[:12] }}'
+                entity_id: "climate.dzik"
+                entity_color: "#f6d169"
 
       ##### TRV4
       - obj: "p2b51" # trv name
@@ -65,7 +102,18 @@ openhasp:
       - obj: "p2b53" # state
         properties:
           "text_color": '{{ "#FF0000" if is_state_attr("climate.sypialnia", "hvac_action", "heating") else "#FFFFFF" }}'
-
+        event:
+          "up":
+            - service: input_number.set_value
+              target:
+                entity_id: input_number.hasspanel_thermostat
+              data:
+                value: '{{state_attr("climate.sypialnia", "temperature") | round(1, "half", 0)}}'
+            - service: script.hasspanel_thermostat_popup
+              data:
+                entity_name: '{{ state_attr("climate.sypialnia", "friendly_name")[:12] }}'
+                entity_id: "climate.sypialnia"
+                entity_color: "#f6d169"
       ##### TRV5
       - obj: "p2b61" # trv name
         properties:
@@ -76,13 +124,14 @@ openhasp:
       - obj: "p2b63" # state
         properties:
           "text_color": '{{ "#FF0000" if is_state_attr("climate.rbs_better_thermostat", "hvac_action", "heating") else "#FFFFFF" }}'
+      - obj: "p2b63" # state
         event:
           "up":
             - service: input_number.set_value
               target:
                 entity_id: input_number.hasspanel_thermostat
               data:
-                value: '{{state_attr("climate.parter", "current_temperature") | round(1, "half", 0)}}'
+                value: '{{state_attr("climate.rbs_better_thermostat", "temperature") | round(1, "half", 0)}}'
             - service: script.hasspanel_thermostat_popup
               data:
                 entity_name: '{{ state_attr("climate.rbs_better_thermostat", "friendly_name")[:12] }}'
@@ -98,6 +147,18 @@ openhasp:
       - obj: "p2b73" # state
         properties:
           "text_color": '{{ "#FF0000" if is_state_attr("climate.attic_thermostat", "hvac_action", "heating") else "#FFFFFF" }}'
+        event:
+          "up":
+            - service: input_number.set_value
+              target:
+                entity_id: input_number.hasspanel_thermostat
+              data:
+                value: '{{state_attr("climate.attic_thermostat", "temperature") | round(1, "half", 0)}}'
+            - service: script.hasspanel_thermostat_popup
+              data:
+                entity_name: '{{ state_attr("climate.attic_thermostat", "friendly_name")[:12] }}'
+                entity_id: "climate.attic_thermostat"
+                entity_color: "#f6d169"
 
       ##### TRV7
       - obj: "p2b81" # trv name

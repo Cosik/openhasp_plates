@@ -5,8 +5,8 @@
 {"page":0,"id":153,"parentid":150,"obj":"btn","x":320,"y":15,"w":48,"h":48,"radius":24,"click":true,"border_side":0,"bg_color":"#2E3440","text":"\uE156"}
 {"page":0,"id":177,"parentid":150,"obj":"linemeter","x":40,"y":60,"w":300,"h":300,"line_count":"50","line_width":4,"value_font":48,"border_side":0,"scale_end_line_width":2,
         "line_color":"#2BC829","scale_grad_color":"#f44336","scale_end_color":"#DDD","scale_width":30,"tag":"{{
-        entity_id }}",  "min":{{state_attr(''input_number.hasspanel_woonkamer_thermostat'',
-        ''min'') }}, "max":{{ state_attr(''input_number.hasspanel_woonkamer_thermostat'',
-        ''max'') }},  "val":{{ state_attr( entity_id, "current_temperature") }}, "value_str":"{{state_attr( entity_id, "current_temperature") }} °C" }
-{"page":0,"id":178,"parentid":150,"obj":"btn","x":105,"y":305,"w":65,"h":50,"toggle":false,"text":"\uE045","align":"center","radius":5,"tag":"{{entity_id }}"}
-{"page":0,"id":179,"parentid":150,"obj":"btn","x":200,"y":305,"w":65,"h":50,"toggle":false,"text":"\uE05D","align":"center","radius":5,"tag":"{{  entity_id}}"}
+        entity_id }}",  "min":{{state_attr(''input_number.hasspanel_thermostat'',
+        ''min'') }}, "max":{{ state_attr(''input_number.hasspanel_thermostat'',
+        ''max'') }},  "val":{{ state_attr( entity_id, "temperature") }}, "value_str":"{{state_attr( entity_id, "temperature") }} °C" }
+{"page":0,"id":178,"parentid":150,"obj":"btn","x":105,"y":305,"w":65,"h":50,"toggle":false,"text":"\uE045","align":"center","radius":5,"tag":"{{entity_id}}"}
+{"page":0,"id":179,"parentid":150,"obj":"btn","x":200,"y":305,"w":65,"h":50,"toggle":false,"text":"\uE05D","align":"center","radius":5,"tag":"{{entity_id}}"}
