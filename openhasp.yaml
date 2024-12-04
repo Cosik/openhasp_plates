@@ -1,0 +1,149 @@
+openhasp:
+  main_plate:
+    objects:
+      ############### Home code
+      - obj: "p1b20" # temperature Parter
+        properties:
+          "text": '{{ states("sensor.ws2900_tempin") }}°C{{ "\n" }}{{ states("sensor.ws2900_humidityin") }}%'
+      - obj: "p1b21" # temperature outside
+        properties:
+          "text": '{{ states("sensor.ws2900_temp") }}°C{{ "\n" }}{{ states("sensor.ws2900_humidity") }}%'
+      - obj: "p1b23" # rain
+        properties:
+          "text": ' {{ ("\uE597 " + states("sensor.ws2900_rainrate", with_unit=True)) if states("sensor.ws2900_rainrate") | float }} '
+          "hidden": '{{ "false" if states("sensor.ws2900_rainrate") | float else "true" }}'
+      - obj: "p1b24" # wind
+        properties:
+          "text": ' {{ ("\uE59D " + states("sensor.ws2900_windspeed", with_unit=True)) if states("sensor.ws2900_windspeed") | float > 3 }}'
+          "hidden": '{{ "true" if states("sensor.ws2900_windspeed") | float < 3 else "false" }}'
+
+      - obj: "p1b30" # power production
+        properties:
+          "value_str": '{{ (states("sensor.energy_total") | float * 1000) | round(0)}}W'
+          "val": '{{ (states("sensor.energy_total") | float * 1000) | round(0)}}W'
+      ############### TRV code
+      ##### TRV1
+      - obj: "p2b21" # trv name
+        properties:
+          "text": '{{ state_attr("climate.parter", "friendly_name")[:12] }}'
+      - obj: "p2b22" # temperature
+        properties:
+          "text": '{{ state_attr("climate.parter", "current_temperature") }}°C{{ "\n" }}{{ states("sensor.ws2900_humidityin") }}%'
+      - obj: "p2b23" # state
+        properties:
+          "text_color": '{{ "#FF0000" if is_state_attr("climate.parter", "hvac_action", "heating") else "#FFFFFF" }}'
+
+      ##### TRV2
+      - obj: "p2b31" # trv name
+        properties:
+          "text": '{{ state_attr("climate.lazienka", "friendly_name")[:12] }}'
+      - obj: "p2b32" # temperature
+        properties:
+          "text": '{{ state_attr("climate.lazienka", "current_temperature") }}°C{{ "\n" }}{{ state_attr("climate.lazienka", "humidity") }}%'
+      - obj: "p2b33" # state
+        properties:
+          "text_color": '{{ "#FF0000" if is_state_attr("climate.lazienka", "hvac_action", "heating") else "#FFFFFF" }}'
+
+      ##### TRV3
+      - obj: "p2b41" # trv name
+        properties:
+          "text": '{{ state_attr("climate.dzik", "friendly_name")[:12] }}'
+      - obj: "p2b42" # temperature
+        properties:
+          "text": '{{ state_attr("climate.dzik", "current_temperature") }}°C{{ "\n" }}{{ states("sensor.dzik_temperature_humidity") }}%'
+      - obj: "p2b43" # state
+        properties:
+          "text_color": '{{ "#FF0000" if is_state_attr("climate.dzik", "hvac_action", "heating") else "#FFFFFF" }}'
+
+      ##### TRV4
+      - obj: "p2b51" # trv name
+        properties:
+          "text": '{{ state_attr("climate.sypialnia", "friendly_name")[:12] }}'
+      - obj: "p2b52" # temperature
+        properties:
+          "text": '{{ state_attr("climate.sypialnia", "current_temperature") }}°C{{ "\n" }}{{ states("sensor.rtx24_zths4_humidity") }}%'
+      - obj: "p2b53" # state
+        properties:
+          "text_color": '{{ "#FF0000" if is_state_attr("climate.sypialnia", "hvac_action", "heating") else "#FFFFFF" }}'
+
+      ##### TRV5
+      - obj: "p2b61" # trv name
+        properties:
+          "text": '{{ state_attr("climate.rbs_better_thermostat", "friendly_name")[:12] }}'
+      - obj: "p2b62" # temperature
+        properties:
+          "text": '{{ state_attr("climate.rbs_better_thermostat", "current_temperature") }}°C{{ "\n" }}{{ state_attr("climate.rbs_better_thermostat", "humidity") }}%'
+      - obj: "p2b63" # state
+        properties:
+          "text_color": '{{ "#FF0000" if is_state_attr("climate.rbs_better_thermostat", "hvac_action", "heating") else "#FFFFFF" }}'
+        event:
+          "up":
+            - service: input_number.set_value
+              target:
+                entity_id: input_number.hasspanel_thermostat
+              data:
+                value: '{{state_attr("climate.parter", "current_temperature") | round(1, "half", 0)}}'
+            - service: script.hasspanel_thermostat_popup
+              data:
+                entity_name: '{{ state_attr("climate.rbs_better_thermostat", "friendly_name")[:12] }}'
+                entity_id: "climate.rbs_better_thermostat"
+                entity_color: "#f6d169"
+      ##### TRV6
+      - obj: "p2b71" # trv name
+        properties:
+          "text": '{{ state_attr("climate.attic_thermostat", "friendly_name")[:12] }}'
+      - obj: "p2b72" # temperature
+        properties:
+          "text": '{{ state_attr("climate.attic_thermostat", "current_temperature") }}°C{{ "\n" }}{{ state_attr("climate.attic_thermostat", "humidity") }}%'
+      - obj: "p2b73" # state
+        properties:
+          "text_color": '{{ "#FF0000" if is_state_attr("climate.attic_thermostat", "hvac_action", "heating") else "#FFFFFF" }}'
+
+      ##### TRV7
+      - obj: "p2b81" # trv name
+        properties:
+          "text": '{{ state_attr("climate.climate.klimatyzator_air_conditioner", "friendly_name")[:12] }}'
+      - obj: "p2b82" # temperature
+        properties:
+          "text": '{{ state_attr("climate.attic_thermostat", "current_temperature") }}°C{{ "\n" }}{{ state_attr("climate.attic_thermostat", "humidity") }}%'
+      - obj: "p2b83" # state
+        properties:
+          "text_color": '{{ "#FF0000" if is_state_attr("climate.climate.klimatyzator_air_conditioner", "hvac_action", "heating") else "#FFFFFF" }}'
+
+      ################### END TRV code
+
+      ################### Control thermostat popup
+      - obj: "p0b153" # pop-up close button
+        event:
+          "up":
+            - service: openhasp.command
+              target:
+                entity_id: openhasp.main_plate
+              data:
+                keyword: p0b149.delete
+      - obj: "p0b177" # thermostat popup: temperature meter
+        properties:
+          "val": '{{ states("input_number.hasspanel_thermostat") }}'
+          "value_str": '{{ states("input_number.hasspanel_thermostat") | round(1) }}°C'
+      - obj: "p0b178" # thermostat popup: temperature decrease button
+        event:
+          "up":
+            - service: input_number.decrement
+              data:
+                entity_id: "input_number.hasspanel_thermostat"
+            - service: climate.set_temperature
+              target:
+                entity_id: "{{ tag }}"
+              data:
+                temperature: '{{ states("input_number.hasspanel_thermostat") }}'
+      - obj: "p0b179" # thermostat popup: temperature increase button
+        event:
+          "up":
+            - service: input_number.increment
+              data:
+                entity_id: "input_number.hasspanel_thermostat"
+            - service: climate.set_temperature
+              target:
+                entity_id: "{{ tag }}"
+              data:
+                temperature: '{{ states("input_number.hasspanel_thermostat") }}'
