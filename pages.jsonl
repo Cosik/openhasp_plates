@@ -4,15 +4,22 @@
 {"id":2,"obj":"obj","comment":"navigation","x":0,"y":0,"w":160,"h":480,"radius":0,"bg_color":"#3b3b3b","bg_opa":140,"border_width":0, "action":{"down":"page 1"}}
 {"id":3,"obj":"label","x":0,"y":0,"w":160,"h":56,"parentid":2,"align":"center","text":"12:01","text_font":48,"template": "%H:%M", "action":{"down":"page 1"}}
 {"id":4,"obj":"label","x":0,"y":40,"w":160,"h":60,"parentid":2,"align":"center","text":"date","text_font":24,"template": "%a %d.%m.%Y", "action":{"down":"page 1"}}
-{"id":5,"obj":"label","comment":"heating","x":0,"y":160,"w":150,"h":60,"parentid":2,"align":"center","text":"\uE438","pad_top":12,"action":{"down":"page 2"}}
+{"id":5,"obj":"label","comment":"heating","x":0,"y":160,"w":160,"h":60,"parentid":2,"align":"center","text":"\uE438","pad_top":12,"action":{"down":"page 2"}}
 
 {"comment":" ----------- Page 1 objects ------------"}
 {"id":11,"obj":"img","x":160,"y":180,"w":300,"h":300,"auto_size":1,"src":"L:/home_.png","pivot_x":0,"pivot_y":0}
 {"id":10,"obj":"obj","comment":"main_space","x":160,"y":0,"w":640,"h":480,"radius":0,"bg_color":"#3b3b3b","bg_opa":50,"border_width":0}
-{"id":81,"obj":"label","comment":"temp_in","x":40,"y":310,"w":200,"h":100,"parentid":10,"align":"center","text":"22.95°C\n99%","text_font":42,"text_color":"orange"}
-{"id":82,"obj":"label","comment":"temp_out","x":280,"y":310,"w":200,"h":100,"parentid":10,"align":"center","text":"22.95°C\n99%","text_font":42,"text_color":"#008080"}
-{"id":83,"obj":"label","comment":"weather","x":100,"y":5,"w":120,"h":120,"parentid":10,"align":"center","text":"\uE599","text_font":120,"text_color":"#FFFF00"}
-{"id":84,"obj":"gauge","comment":"solar_power","x":440,"y":160,"w":200,"h":200,"parentid":10,"max":3400,"bg_opa":120,"bg_opa2":100, "format":0,"text_font":20,"text_color":"#000000","line_color10":"orange", "val":1000,"bg_color10":"#000000","critical_value":3000,"line_color60":"orange","value_str":"","value_ofs_y":70,"value_font":6, "value_color":"orange"}
+{"id":20,"obj":"label","comment":"temp_in","x":40,"y":310,"w":200,"h":100,"parentid":10,"align":"center","text":"22.95°C\n99%","text_font":42,"text_color":"orange"}
+{"id":21,"obj":"label","comment":"temp_out","x":280,"y":310,"w":200,"h":100,"parentid":10,"align":"center","text":"22.95°C\n99%","text_font":42,"text_color":"#008080"}
+{"id":22,"obj":"label","comment":"weather","x":100,"y":5,"w":120,"h":120,"parentid":10,"align":"center","text":"\uE599","text_font":120,"text_color":"#FFFF00"}
+{"id":23,"obj":"label","comment":"rain","x":400,"y":5,"w":240,"h":50,"parentid":10,"align":"center","text":"\uE597","text_font":40,"text_color":"#000080"}
+{"id":24,"obj":"label","comment":"wind","x":400,"y":55,"w":240,"h":50,"parentid":10,"align":"center","text":"\uE59D","text_font":40,"text_color":"#808080"}
+
+
+{"id":30,"obj":"gauge","comment":"solar_power","x":440,"y":160,"w":200,"h":200,"parentid":10,"max":3400,"bg_opa":120,"bg_opa2":100,"bg_color10":"#000000",
+"text_font":20,"text_color":"#000000","line_color10":"orange","line_color60":"orange",
+"val":0,"critical_value":3000,"format":0,
+"value_str":"","value_ofs_y":70,"value_font":6, "value_color":"orange"}
 
 
 {"page":2,"comment":"Heating"}
@@ -21,7 +28,7 @@
 {"id":2,"obj":"obj","comment":"navigation","x":0,"y":0,"w":160,"h":480,"radius":0,"bg_color":"#3b3b3b","bg_opa":140,"border_width":0, "action":{"down":"page 1"}}
 {"id":3,"obj":"label","x":0,"y":0,"w":160,"h":56,"parentid":2,"align":"center","text":"12:01","text_font":48,"template": "%H:%M", "action":{"down":"page 1"}}
 {"id":4,"obj":"label","x":0,"y":40,"w":160,"h":60,"parentid":2,"align":"center","text":"","text_font":24,"template": "%a %d.%m.%Y", "action":{"down":"page 1"}}
-{"id":5,"obj":"label","x":0,"y":160,"w":150,"h":60,"parentid":2,"align":"center","text":"\uE438","text_color":"#212121","bg_color":"#fff","bg_opa":180,"pad_top":12}
+{"id":5,"obj":"label","x":0,"y":160,"w":160,"h":60,"parentid":2,"align":"center","text":"\uE438","text_color":"#212121","bg_color":"#fff","bg_opa":180,"pad_top":12}
 
 {"comment":" ----------- Page 2 objects ------------"}
 {"id":10,"obj":"obj","comment":"main_space","x":160,"y":0,"w":640,"h":480,"radius":0,"bg_opa":50,"border_width":0}
@@ -60,4 +67,8 @@
 {"id":81,"obj":"label","x":0,"y":0,"w":200,"h":50,"parentid":80,"align":"center","text":"TRV7"}
 {"id":82,"obj":"label","x":0,"y":50,"w":130,"h":100,"parentid":80,"align":"center","text":"22.95°C\n99%","text_font":40}
 {"id":83,"obj":"label","x":140,"y":60,"w":60,"h":60,"parentid":80,"text":"\uE438","text_font":40}
+
+
+
+
 
